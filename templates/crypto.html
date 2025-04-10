@@ -2,36 +2,100 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Crypto App EFREI</title>
+    <title>🔐 Crypto App EFREI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: auto;
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #219150;
+        }
+        .result {
+            background-color: #ecf0f1;
+            border-left: 4px solid #2980b9;
+            padding: 15px;
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-    <h1>🔐 Application de Cryptographie</h1>
+    <h1>🔐 Bienvenue sur votre Crypto App EFREI</h1>
 
-    <h2>🔒 Chiffrement</h2>
+    <h2>🔒 Cryptez un message</h2>
     <form action="/encrypt-form" method="post">
-        <label for="key_encrypt">Clé :</label><br>
-        <input type="text" name="key" id="key_encrypt" required><br><br>
+        <label for="key_encrypt">Votre clé de chiffrement :</label>
+        <input type="text" name="key" id="key_encrypt" placeholder="Entrez votre clé Fernet" required>
 
-        <label for="message_encrypt">Message :</label><br>
-        <textarea name="message" id="message_encrypt" rows="4" cols="50" required></textarea><br><br>
+        <label for="message_encrypt">Message à chiffrer :</label>
+        <textarea name="message" id="message_encrypt" rows="4" placeholder="Tapez votre texte ici..." required></textarea>
 
-        <button type="submit">Chiffrer</button>
+        <button type="submit">🔐 Chiffrer</button>
     </form>
 
-    <h2>🔓 Déchiffrement</h2>
+    <h2>🔓 Décryptez un message</h2>
     <form action="/decrypt-form" method="post">
-        <label for="key_decrypt">Clé :</label><br>
-        <input type="text" name="key" id="key_decrypt" required><br><br>
+        <label for="key_decrypt">Votre clé de déchiffrement :</label>
+        <input type="text" name="key" id="key_decrypt" placeholder="Entrez votre clé Fernet" required>
 
-        <label for="message_decrypt">Message chiffré :</label><br>
-        <textarea name="message" id="message_decrypt" rows="4" cols="50" required></textarea><br><br>
+        <label for="message_decrypt">Message chiffré :</label>
+        <textarea name="message" id="message_decrypt" rows="4" placeholder="Collez ici le texte chiffré..." required></textarea>
 
-        <button type="submit">Déchiffrer</button>
+        <button type="submit">🔓 Déchiffrer</button>
     </form>
 
     {% if result %}
-        <h2>📝 Résultat :</h2>
-        <p><strong>{{ result }}</strong></p>
+        <div class="result">
+            <h2>📝 Résultat :</h2>
+            <p><strong>{{ result }}</strong></p>
+        </div>
     {% endif %}
 </body>
 </html>
